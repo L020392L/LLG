@@ -12,10 +12,17 @@ project "LowLevelGameplay"
 		"src/**.h",
 		"src/**.cpp"
 	}
+
+	defines { "SFML_STATIC", "_CONSOLE"}
 	
 	includedirs
 	{
-		"src"
+		"src",
+		"%{prj.location}/vendor/SFML-2.6.0/include",
+	}
+
+	libdirs
+	{
 		"%{prj.location}/vendor/SFML-2.6.0/lib"
 	}
 	
@@ -61,3 +68,4 @@ project "LowLevelGameplay"
 			"sfml-audio-s",
 			"sfml-network-s"
 		}
+	
