@@ -98,6 +98,9 @@ namespace LLGP
 	template<typename T> requires arithmetic<T>
 	const Vector2<T> Vector2<T>::zero(static_cast<T>(0), static_cast<T>(0));
 
+	template<typename T> requires arithmetic<T>
+	const Vector2<T> Vector2<T>::one(static_cast<T>(1), static_cast<T>(1));
+
 	//TODO: implement the other static const values
 
 	//implemented some useful typedefs

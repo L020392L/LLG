@@ -8,7 +8,7 @@ workspace "LowLevelGameplay"
 	configurations
 	{
 		"Debug",
-		"Realease"
+		"Release"
 	}
 	
 	solution_items
