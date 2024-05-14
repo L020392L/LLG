@@ -95,6 +95,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Event.h" />
+    <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\Vector2.h" />
     <ClInclude Include="src\arithmetic_concept.h" />
   </ItemGroup>
