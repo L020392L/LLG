@@ -1,5 +1,4 @@
 #include <GameObject.h>
-#include <Object.h>
 
 class Component : public Object
 {
