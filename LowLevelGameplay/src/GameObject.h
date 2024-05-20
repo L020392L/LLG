@@ -1,6 +1,8 @@
 #include <concepts>
 #include <string>
 #include <arithmetic_concept.h>
+#include <Object.h>
+#include <Vector2.h>
 
 class GameObject :public Object
 {
