@@ -1,13 +1,16 @@
-#include "UUID.h"
-
-class Object
+#pragma once
+#include <UUID.h>
+namespace LLGP
 {
-public:
-	Object() : uuid() {}
-	Object(const Object&) = default;
+	class Object
+	{
+	public:
+		Object() : uuid() {}
+		Object(const Object&) = default;
 
-	UUID uuid;
+		UUID uuid;
 
-	inline bool operator==(const Object& rhs) { return (uint64_t)this->uuid == (uint64_t)rhs.uuid; }
-	inline bool operator!=(const Object& rhs) { return !(*this == rhs); }
-};
+		inline bool operator==(const Object& rhs) { return (uint64_t)this->uuid == (uint64_t)rhs.uuid; }
+		inline bool operator!=(const Object& rhs) { return !(*this == rhs); }
+	};
+}

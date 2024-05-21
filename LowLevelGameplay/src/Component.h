@@ -1,14 +1,20 @@
-#include <GameObject.h>
+#include <Object.h>
 
-class Component : public Object
+namespace LLGP
 {
-	Component(GameObject* owner) : _GameObject(owner) {}
-	~Component() {}
 
-	GameObject* GetGameObject() { return _GameObject; }
+	class GameObject;
 
-	virtual void OwnerActiveChange(bool newActive) {}
+	class Component : public Object
+	{
+		Component(GameObject* owner) : _GameObject(owner) {}
+		~Component() {}
 
-protected:
-	GameObject* _GameObject;
-};
+		GameObject* GetGameObject() { return _GameObject; }
+
+		virtual void OwnerActiveChange(bool newActive) {}
+
+	protected:
+		GameObject* _GameObject;
+	};
+}
