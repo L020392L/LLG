@@ -8,11 +8,11 @@ int main()
 	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now();
 	float deltaTime = 0.f;
 
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(900, 450), "SFML works!");
 	
-	Vector2<float> rectSize = Vector2<float>::one * 100;
-	Vector2<float> rectPos = Vector2<float>(900, 450);
-	sf::Texture rectTex; rectTex.loadFromFile("");
+	Vector2<float> rectSize = Vector2<float>(900, 450);
+	Vector2<float> rectPos = Vector2<float>(450, 225);
+	sf::Texture rectTex; rectTex.loadFromFile("Space.png");
 	sf::RectangleShape shape(rectSize);
 	shape.setTexture(&rectTex);
 	shape.setOrigin(rectSize / 2);
