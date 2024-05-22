@@ -20,7 +20,7 @@ namespace LLGP {
 	public:
 		GameObject();
 		GameObject(const GameObject&) = default;
-		Transform* transfrom;
+		Transform* transform;
 		inline void SetName(std::string newName) { m_Name = newName; }
 		inline std::string GetName() { return m_Name; }
 
