@@ -100,6 +100,7 @@
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\Object.h" />
+    <ClInclude Include="src\Transform.h" />
     <ClInclude Include="src\UUID.h" />
     <ClInclude Include="src\Vector2.h" />
     <ClInclude Include="src\arithmetic_concept.h" />

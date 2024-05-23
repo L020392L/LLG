@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Object.h>
+#include <Vector2.h>
 
 namespace LLGP
 {
@@ -9,7 +10,9 @@ namespace LLGP
 
 	class Component : public Object
 	{
-		Component(GameObject* owner) : _GameObject(owner) {}
+	public:
+		Component(GameObject* owner) : _GameObject(owner) { _GameObject = owner; }
+		Component() = default;
 		~Component() {}
 
 		GameObject* GetGameObject() { return _GameObject; }

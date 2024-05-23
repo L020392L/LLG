@@ -19,13 +19,7 @@ int main()
 	shape.setOrigin(rectSize / 2);
 	shape.setPosition(rectPos);
 
-	GameObject playerCharacter;
-	GameObject mother;
-	GameObject father;
-	GameObject child;
-	GameObject enemy;
-
-	playerCharacter.transform->location = new Vector2 (450.0f, 225.0f);
+	
 
 	while (window.isOpen())
 	{
