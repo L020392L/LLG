@@ -11,7 +11,10 @@ namespace LLGP
 	class Component : public Object
 	{
 	public:
-		Component(GameObject* owner) : _GameObject(owner) { _GameObject = owner; }
+		Component(GameObject* owner) : _GameObject(owner)
+		{
+			_GameObject = owner; 
+		}
 		Component() = default;
 		~Component() {}
 

@@ -1,3 +1,4 @@
+#pragma once
 #include <concepts>
 #include <string>
 #include <arithmetic_concept.h>
@@ -6,18 +7,20 @@
 #include <Component.h>
 #include <Concept.h>
 #include <Transform.h>
+#include <Sprite.h>
 
-namespace LLGP {
+namespace LLGP 
+{
 
 	
 
-	class GameObject :public Object
+	class GameObject : public Object
 	{
 	public:
 		GameObject();
 		GameObject(const GameObject&) = default;
 
-		~GameObject();
+		~GameObject() {}
 
 		Transform* transform;
 		inline void SetName(std::string newName) { m_Name = newName; }
@@ -44,23 +47,23 @@ namespace LLGP {
 		inline bool operator!=(const GameObject& other) { return !(*this == other); }
 	};
 
-	template<class T> requires isComponent<T>
-	T* GameObject::GetComponent()
+	
+	template<class T> requires isComponent<T> T* GameObject::GetComponent()
 	{
 		T* returnComp = nullptr;
 		for (int i = 0; i < m_Components.size(); i++)
 		{
-			returnComp = static_Cast<T*>(m_Components[i].get());
-			if (returnComp != nullptr)
+			
+			if (returnComp = dynamic_cast<T*>(m_Components[i].get()))
 			{
-				break;
+				return returnComp;
 			}
 		}
-		return returnComp;
+		return nullptr;
 	}
 
-	template<class T> requires isComponent<T>
-	T* GameObject::AddComponent()
+	
+	template<class T> requires isComponent<T> T* GameObject::AddComponent()
 	{
 		std::unique_ptr<Component> newComp = std::make_unique<T>(this);
 		m_Components.push_back(std::move(newComp));
