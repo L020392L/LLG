@@ -27,15 +27,54 @@ int main()
 	player->AddComponent<Sprite>();
 	player->GetComponent<Sprite>()->setSprite(Vector2<float>(20, 20), "Sprites/PlayerForward.png");
 
+	LLGP::GameObject* child = new LLGP::GameObject();
+	child->transform->SetLocation(Vector2<float>(225, 225));
+	objects.push_back(child);
+	child->AddComponent<Sprite>();
+	child->GetComponent<Sprite>()->setSprite(Vector2<float>(20, 20), "Sprites/ChildForward.png");
+
+	LLGP::GameObject* mother = new LLGP::GameObject();
+	mother->transform->SetLocation(Vector2<float>(675, 225));
+	objects.push_back(mother);
+	mother->AddComponent<Sprite>();
+	mother->GetComponent<Sprite>()->setSprite(Vector2<float>(20, 20), "Sprites/MotherForward.png");
+
+	LLGP::GameObject* father = new LLGP::GameObject();
+	father->transform->SetLocation(Vector2<float>(450, 337));
+	objects.push_back(father);
+	father->AddComponent<Sprite>();
+	father->GetComponent<Sprite>()->setSprite(Vector2<float>(20, 20), "Sprites/FatherForward.png");
+
+	LLGP::GameObject* enemy = new LLGP::GameObject();
+	enemy->transform->SetLocation(Vector2<float>(450, 113));
+	objects.push_back(enemy);
+	enemy->AddComponent<Sprite>();
+	enemy->GetComponent<Sprite>()->setSprite(Vector2<float>(20, 20), "Sprites/Enemy.png");
+
 	while (window.isOpen())
 	{
 		std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
 		deltaTime = std::chrono::duration_cast<std::chrono::microseconds>(now - lastTime).count() / 1000000.f;
 		lastTime = now;
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+		{
+			player->transform->SetLocation(player->transform->GetLocation() + Vector2<float>(0, -.05));
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+		{
+			player->transform->SetLocation(player->transform->GetLocation() + Vector2<float>(0, .05));
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+		{
+			player->transform->SetLocation(player->transform->GetLocation() + Vector2<float>(-.05, 0));
+		}
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 		{
-			
+			player->transform->SetLocation(player->transform->GetLocation() + Vector2<float>(.05, 0));
 		}
 
 		sf::Event event;
