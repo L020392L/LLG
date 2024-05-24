@@ -4,6 +4,8 @@
 #include <GameObject.h>
 using namespace LLGP;
 
+std::vector<LLGP::GameObject*> objects;
+
 int main()
 {
 	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now();
@@ -19,7 +21,11 @@ int main()
 	shape.setOrigin(rectSize / 2);
 	shape.setPosition(rectPos);
 
-	
+	LLGP::GameObject* player = new LLGP::GameObject();
+	player->transform->SetLocation(Vector2<float>(450, 225));
+	objects.push_back(player);
+	player->AddComponent<Sprite>();
+	player->GetComponent<Sprite>()->setSprite(Vector2<float>(20, 20), "Sprites/PlayerForward.png");
 
 	while (window.isOpen())
 	{
@@ -41,6 +47,16 @@ int main()
 
 		window.clear();
 		window.draw(shape);
+
+		for (int i = 0; i < objects.size(); i++)
+		{
+			if (objects[i]->GetComponent<Sprite>())
+			{
+				objects[i]->GetComponent<Sprite>()->UpdateSprite(deltaTime);
+				window.draw(objects[i]->GetComponent<Sprite>()->shape);
+			}
+		}
+
 		window.display();
 	}	
 
