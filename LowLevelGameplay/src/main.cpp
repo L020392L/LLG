@@ -8,6 +8,8 @@ std::vector<LLGP::GameObject*> objects;
 
 int main()
 {
+	int countdown = 0;
+
 	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now();
 	float deltaTime = 0.f;
 
@@ -15,7 +17,7 @@ int main()
 	
 	Vector2<float> rectSize = Vector2<float>(900, 450);
 	Vector2<float> rectPos = Vector2<float>(450, 225);
-	sf::Texture rectTex; rectTex.loadFromFile("Space.png");
+	sf::Texture rectTex; rectTex.loadFromFile("Black.png");
 	sf::RectangleShape shape(rectSize);
 	shape.setTexture(&rectTex);
 	shape.setOrigin(rectSize / 2);
@@ -75,6 +77,53 @@ int main()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 		{
 			player->transform->SetLocation(player->transform->GetLocation() + Vector2<float>(.05, 0));
+		}
+
+		if (sqrt((player->transform->GetLocation().x - enemy->transform->GetLocation().x)* (player->transform->GetLocation().x - enemy->transform->GetLocation().x)) <= 20)
+		{
+			if (sqrt((player->transform->GetLocation().y - enemy->transform->GetLocation().y) * (player->transform->GetLocation().y - enemy->transform->GetLocation().y)) <= 20)
+			{
+				window.close();
+			}
+		}
+
+		if (sqrt((player->transform->GetLocation().x - child->transform->GetLocation().x) * (player->transform->GetLocation().x - child->transform->GetLocation().x)) <= 20)
+		{
+			if (sqrt((player->transform->GetLocation().y - child->transform->GetLocation().y) * (player->transform->GetLocation().y - child->transform->GetLocation().y)) <= 20)
+			{
+				child->transform->SetLocation(child->transform->GetLocation() + Vector2<float>(5000, 0));
+				countdown++;
+				if (countdown == 3)
+				{
+					window.close();
+				}
+			}
+		}
+
+		if (sqrt((player->transform->GetLocation().x - mother->transform->GetLocation().x) * (player->transform->GetLocation().x - mother->transform->GetLocation().x)) <= 20)
+		{
+			if (sqrt((player->transform->GetLocation().y - mother->transform->GetLocation().y) * (player->transform->GetLocation().y - mother->transform->GetLocation().y)) <= 20)
+			{
+				mother->transform->SetLocation(mother->transform->GetLocation() + Vector2<float>(5000, 0));
+				countdown++;
+				if (countdown == 3)
+				{
+					window.close();
+				}
+			}
+		}
+
+		if (sqrt((player->transform->GetLocation().x - father->transform->GetLocation().x) * (player->transform->GetLocation().x - father->transform->GetLocation().x)) <= 20)
+		{
+			if (sqrt((player->transform->GetLocation().y - father->transform->GetLocation().y) * (player->transform->GetLocation().y - father->transform->GetLocation().y)) <= 20)
+			{
+				father->transform->SetLocation(father->transform->GetLocation() + Vector2<float>(5000, 0));
+				countdown++;
+				if (countdown == 3)
+				{
+					window.close();
+				}
+			}
 		}
 
 		sf::Event event;
